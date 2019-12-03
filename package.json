@@ -1,6 +1,6 @@
 {
   "name": "tinymce-plugin-text-indent-outdent",
-  "version": "1.0.5",
+  "version": "1.0.2",
   "description": "A tinymce plugin text indent outdent",
   "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
   "license": "MIT",
@@ -67,7 +67,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,json,css,md,jsx,vue,ts,less,html}": [
+    "*.{js,json,css,md,jsx,vue,less,html}": [
       "prettier --write",
       "git add"
     ]
