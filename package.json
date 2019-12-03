@@ -30,7 +30,7 @@
     "test": "bedrock-auto -b phantomjs -d src/test/ts/",
     "test-manual": "bedrock -d src/test/ts/",
     "start": "grunt webpack",
-    "example:build": "node example/build.js"
+    "example:build": "npm run prepublishOnly && node example/build.js"
   },
   "devDependencies": {
     "@ephox/agar": "latest",
