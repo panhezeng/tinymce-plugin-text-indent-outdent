@@ -1,6 +1,6 @@
 {
   "name": "tinymce-plugin-text-indent-outdent",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A tinymce plugin text indent outdent",
   "author": "潘何增 <panhezeng@gmail.com> (http://apsay.com/)",
   "license": "MIT",
