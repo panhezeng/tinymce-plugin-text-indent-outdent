@@ -16,8 +16,8 @@ function build(path) {
     dir
   );
   shell
-    .echo(
-      minify(shell.cat(resolve("example/template.html")), {
+    .ShellString(
+      minify(shell.cat(resolve("example/template.html")).stdout, {
         collapseWhitespace: true,
         removeComments: true,
         removeOptionalTags: true,
