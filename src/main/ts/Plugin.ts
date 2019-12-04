@@ -359,6 +359,10 @@ const setup = (editor, url) => {
     tooltip: 'text indent',
     icon: 'text-indent',
     onAction: () => {
+      if (!editor.hasFocus()) {
+        editor.focus();
+      }
+
       const dom = editor.dom;
       const selection = editor.selection;
       const formatter = editor.formatter;
@@ -374,6 +378,8 @@ const setup = (editor, url) => {
           formatter.apply('div');
         }
       }
+      // tslint:disable-next-line:no-console
+      console.log(getBlocksToIndent(editor));
       each(getBlocksToIndent(editor), function (block) {
         indentElement(dom, 'indent', indentValue, indentUnit, block.dom());
       });
@@ -388,6 +394,10 @@ const setup = (editor, url) => {
     tooltip: 'text outdent',
     icon: 'text-outdent',
     onAction: () => {
+      if (!editor.hasFocus()) {
+        editor.focus();
+      }
+
       const dom = editor.dom;
       const selection = editor.selection;
       const formatter = editor.formatter;
