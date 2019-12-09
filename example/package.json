@@ -1,0 +1,75 @@
+{
+  "name": "@panhezeng/countdown-example",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "",
+  "bugs": {},
+  "license": "Apache-2.0",
+  "author": {
+    "name": "潘何增",
+    "email": "panhezeng@gmail.com",
+    "url": "http://apsay.com/"
+  },
+  "contributors": [],
+  "files": [],
+  "main": "",
+  "browser": "",
+  "bin": {},
+  "repository": {},
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open --hot --config webpack.config.js",
+    "build": "webpack --mode production --config webpack.config.js"
+  },
+  "config": {},
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.1",
+    "lint-staged": "^9.2.1",
+    "prettier": "^1.18.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "shelljs": "^0.8.3",
+    "webpack": "^4.37.0",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
+    "tinymce": "^5.0.11"
+  },
+  "peerdependencies": {},
+  "engines": {
+    "node": "latest",
+    "npm": "latest"
+  },
+  "private": false,
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,jsx,vue}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{md,json,html,css,less}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "browserslist": [
+    "maintained node versions",
+    "not dead",
+    "> 1%",
+    "Firefox ESR",
+    "ie 11"
+  ]
+}
