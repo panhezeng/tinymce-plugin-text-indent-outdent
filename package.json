@@ -1,6 +1,6 @@
 {
-  "name": "tinymce-plugin-text-indent-outdent",
-  "version": "1.0.7",
+  "name": "@panhezeng/tinymce-plugin-text-indent-outdent",
+  "version": "0.0.0",
   "description": "A tinymce plugin text indent outdent",
   "keywords": [
     "tinymce plugin",
@@ -39,9 +39,9 @@
   },
   "config": {},
   "devDependencies": {
-    "@babel/cli": "^7.7.4",
-    "@babel/core": "^7.7.4",
-    "@babel/preset-env": "^7.7.4",
+    "@babel/cli": "^7.7.5",
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "eslint": "^6.7.2",
@@ -50,9 +50,9 @@
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
+    "tinymce": "^5.0.11",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10",
-    "tinymce": "^5.0.11"
+    "webpack-cli": "^3.3.10"
   },
   "peerDependencies": {
     "tinymce": "^5.0.11"
