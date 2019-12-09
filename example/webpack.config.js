@@ -8,11 +8,6 @@ const config = {
   output: {
     path: outputPath
   },
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
-    tinymce: "tinymce"
-  },
   module: {
     rules: [
       {
@@ -23,10 +18,14 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".js", ".jsx"]
+    extensions: [".js", ".json", ".jsx", ".css"]
   },
-  plugins: [],
-  devServer: {}
+  externals: {
+    react: "React",
+    "react-dom": "ReactDOM",
+    tinymce: "tinymce"
+  },
+  plugins: []
 };
 
 module.exports = (env, argv) => {
