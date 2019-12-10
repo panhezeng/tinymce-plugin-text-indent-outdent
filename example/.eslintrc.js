@@ -1,6 +1,12 @@
 module.exports = {
-  env: {
-    browser: true,
-    node: false
+  extends: [
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "prettier/react"
+  ],
+  settings: {
+    react: {
+      version: "detect"
+    }
   }
 };

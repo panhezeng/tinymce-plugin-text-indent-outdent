@@ -32,7 +32,8 @@
     "url": "git+https://github.com/panhezeng/tinymce-plugin-text-indent-outdent.git"
   },
   "scripts": {
-    "build": "webpack --mode production",
+    "lint": "eslint --fix 'src/**'",
+    "build": "npm run lint && webpack --mode production",
     "install:example": "cd example && npm install",
     "dev:example": "cd example && npm run dev",
     "build:example": "cd example && npm run build"
@@ -50,12 +51,12 @@
     "husky": "^3.1.0",
     "lint-staged": "^9.5.0",
     "prettier": "^1.19.1",
-    "tinymce": "^5.0.11",
+    "tinymce": "~5",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10"
   },
   "peerDependencies": {
-    "tinymce": "^5.0.11"
+    "tinymce": "~5"
   },
   "engines": {
     "node": "latest",
@@ -68,11 +69,7 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,jsx,vue}": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{md,json,html,css,less}": [
+    "*.{js,ts,jsx,vue,md,json,html,css,less}": [
       "prettier --write",
       "git add"
     ]
