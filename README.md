@@ -1,8 +1,14 @@
-# TinyMCE Plugin
+# tinymce-plugin-text-indent-outdent
 
-## 示例
+[![NPM](https://nodei.co/npm/@panhezeng/tinymce-plugin-text-indent-outdent.png?compact=true)](https://nodei.co/npm/@panhezeng/tinymce-plugin-text-indent-outdent/)
+
+> tinymce plugin
+
+## Example
 
 [点击预览](https://panhezeng.github.io/tinymce-plugin-text-indent-outdent/)
+
+## Explain
 
 官方的 indent 不是 text-indent，于是自己写了一个。
 
@@ -10,7 +16,7 @@
 
 pluginTextIndentOutdent 如果不传，默认值是 2px
 
-使用
+## Use
 
 ```javascript
 tinymce.init({
@@ -21,14 +27,6 @@ tinymce.init({
 });
 ```
 
-## 编译
+## Development
 
-```bash
-
-# 发版
-npm set registry https://registry.npmjs.org/ && npm set @panhezeng:registry https://registry.npmjs.org/ && npm publish --access public && npm set registry https://registry.npm.taobao.org/ && npm set @panhezeng:registry https://registry.npm.taobao.org/
-
-# 发版patch
-npm set registry https://registry.npmjs.org/ && npm set @panhezeng:registry https://registry.npmjs.org/ && npm version patch && npm publish --access public && npm set registry https://registry.npm.taobao.org/ && npm set @panhezeng:registry https://registry.npm.taobao.org/
-
-```
+- [semantic-release-cli setup](https://semantic-release.gitbook.io/semantic-release/usage/getting-started)

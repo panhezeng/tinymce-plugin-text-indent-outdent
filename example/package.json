@@ -35,8 +35,6 @@
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
     "html-webpack-plugin": "^3.2.0",
-    "husky": "^3.0.1",
-    "lint-staged": "^9.2.1",
     "prettier": "^1.18.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -49,26 +47,8 @@
   "peerDependencies": {
     "tinymce": "~5"
   },
-  "engines": {
-    "node": "latest",
-    "npm": "latest"
-  },
+  "engines": {},
   "private": false,
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "src/**": [
-      "eslint --fix",
-      "git add"
-    ],
-    "*.{js,ts,jsx,vue,md,json,html,css,less}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "browserslist": [
     "maintained node versions",
     "not dead",
