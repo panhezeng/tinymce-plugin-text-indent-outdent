@@ -31,7 +31,7 @@ tinymce.init({
 
 - [semantic-release-cli setup](https://semantic-release.gitbook.io/semantic-release/usage/getting-started)
 
-### test
+### Test
 
 example/src/index.js => import "../../src/index";
 `npm run dev:example`
