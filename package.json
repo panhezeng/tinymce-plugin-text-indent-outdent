@@ -73,7 +73,7 @@
     "tinymce": "~5"
   },
   "engines": {
-    "node": ">=12",
+    "node": ">=13",
     "npm": ">=6"
   },
   "private": false,
