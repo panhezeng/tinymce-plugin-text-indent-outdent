@@ -18,7 +18,7 @@
   "bin": {},
   "repository": {},
   "scripts": {
-    "lint": "eslint --fix 'src/**'",
+    "lint": "eslint --fix 'src/**/*.{js,ts,jsx,vue}'",
     "dev": "webpack-dev-server --mode development --open --hot",
     "build": "npm run lint && webpack --mode production"
   },
