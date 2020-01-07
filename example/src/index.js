@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import tinymce from "tinymce";
 import "../../src/index";
 // import "../../dist/tinymce-plugin-text-indent-outdent/plugin.min";
+import "../../dist/langs/zh_CN";
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,10 @@ class App extends React.Component {
       selector: "textarea.tinymce",
       plugins: "code text-indent-outdent",
       toolbar: "text-indent | text-outdent | indent | outdent | code",
-      pluginTextIndentOutdent: "30px"
+      language: "zh_CN",
+      language_url:
+        "https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/langs/zh_CN.js",
+      pluginTextIndentOutdent: { value: 30, unit: "px" }
     });
   }
 

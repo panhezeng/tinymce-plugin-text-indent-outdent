@@ -1,6 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const shell = require("shelljs");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 const outputPath = path.resolve(__dirname, "../docs");
 
@@ -25,7 +25,7 @@ const config = {
     "react-dom": "ReactDOM",
     tinymce: "tinymce"
   },
-  plugins: []
+  plugins: [new CleanWebpackPlugin()]
 };
 
 module.exports = (env, argv) => {
@@ -34,7 +34,6 @@ module.exports = (env, argv) => {
     template: "index.html"
   };
   if (argv.mode === "production") {
-    shell.rm("-rf", outputPath);
     HtmlWebpackPluginOptions.script = "production.min";
   }
   config.plugins.push(new HtmlWebpackPlugin(HtmlWebpackPluginOptions));

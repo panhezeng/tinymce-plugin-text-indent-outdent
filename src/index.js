@@ -332,9 +332,17 @@ const setup = (editor, url) => {
   let indentUnit = "px";
 
   const pluginTextIndentOutdent = editor.getParam("pluginTextIndentOutdent");
-  if (pluginTextIndentOutdent) {
-    indentUnit = /[a-z%]+$/i.exec(pluginTextIndentOutdent)[0];
-    indentValue = parseInt(pluginTextIndentOutdent, 10);
+  if (
+    /^\[object Object\]$/.test(
+      Object.prototype.toString.call(pluginTextIndentOutdent)
+    )
+  ) {
+    if (/^[a-z%]+$/i.test(pluginTextIndentOutdent.unit)) {
+      indentUnit = pluginTextIndentOutdent.unit;
+    }
+    if (!isNaN(pluginTextIndentOutdent.value)) {
+      indentValue = pluginTextIndentOutdent.value;
+    }
   }
 
   editor.ui.registry.addIcon(
@@ -342,7 +350,7 @@ const setup = (editor, url) => {
     `<svg t="1575356818205" class="icon" viewBox="0 0 1451 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4743" width="24" height="24"><path d="M253.41656 255.809641H0v-85.351983h253.41656V0.176293l301.385713 191.8341-301.385713 191.8341V255.809641z m429.415564 85.358235h768.189108V170.457658H682.832124v170.710218zM426.768671 511.873094h1024.252561v-85.351984H426.768671v85.351984z m0 170.710219h1024.252561v-85.356985H426.768671v85.356985z m0 170.706468h1024.252561V767.936547H426.768671v85.353234z m0 170.710219h768.189108v-85.353234H426.768671v85.353234z" fill="#000000" p-id="4744"></path></svg>`
   );
   editor.ui.registry.addButton("text-indent", {
-    tooltip: "text indent",
+    tooltip: "Increase text indent",
     icon: "text-indent",
     onAction: () => {
       if (!editor.hasFocus()) {
@@ -375,7 +383,7 @@ const setup = (editor, url) => {
     `<svg t="1575356896146" class="icon" viewBox="0 0 1451 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4967" width="24" height="24"><path d="M301.385713 255.809641h253.41656v-85.351983H301.385713V0.176293L0 192.010393l301.385713 191.8341V255.809641z m381.446411 85.358235h768.189108V170.457658H682.832124v170.710218zM426.768671 511.873094h1024.252561v-85.351984H426.768671v85.351984z m0 170.710219h1024.252561v-85.356985H426.768671v85.356985z m0 170.706468h1024.252561V767.936547H426.768671v85.353234z m0 170.710219h768.189108v-85.353234H426.768671v85.353234z" fill="#000000" p-id="4968"></path></svg>`
   );
   editor.ui.registry.addButton("text-outdent", {
-    tooltip: "text outdent",
+    tooltip: "Decrease text indent",
     icon: "text-outdent",
     onAction: () => {
       if (!editor.hasFocus()) {
