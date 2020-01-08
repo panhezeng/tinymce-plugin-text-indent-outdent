@@ -71,7 +71,7 @@
     "tinymce": "~5",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "semantic-release": "^15.13.31"
+    "semantic-release": "^15.14.0"
   },
   "peerDependencies": {
     "tinymce": "~5"
