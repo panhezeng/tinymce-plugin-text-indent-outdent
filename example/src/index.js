@@ -25,10 +25,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <textarea
-        className="tinymce"
-        defaultValue="<p>test1</p><p>test2</p>"
-      ></textarea>
+      <textarea className="tinymce" defaultValue="<p>test1</p><p>test2</p>" />
     );
   }
 }
