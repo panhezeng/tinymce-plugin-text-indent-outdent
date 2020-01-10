@@ -2,8 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import tinymce from "tinymce";
 import "../../src/index";
-// import "../../dist/tinymce-plugin-text-indent-outdent/plugin.min";
-import "../../dist/langs/zh_CN";
+import "../../static/langs/zh_CN";
+// import "../../dist/text-indent-outdent/plugin.min";
+// import "../../dist/text-indent-outdent/langs/zh_CN";
 
 class App extends React.Component {
   constructor(props) {
