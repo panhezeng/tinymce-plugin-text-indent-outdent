@@ -18,7 +18,16 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css"]
+    extensions: [
+      ".js",
+      ".ts",
+      ".jsx",
+      ".vue",
+      ".css",
+      ".less",
+      ".scss",
+      ".json"
+    ]
   },
   externals: {
     react: "React",

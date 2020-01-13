@@ -14,22 +14,25 @@
 
 基于官方 indent 相关代码开发
 
-pluginTextIndentOutdent 如果不传，默认值是 2px
+plugin_textindentoutdent 如果不传，默认值是 2px
 
 ## Use
 
 ```javascript
 tinymce.init({
   selector: "textarea.tinymce",
-  plugins: "text-indent-outdent",
-  toolbar: "text-indent | text-outdent",
-  pluginTextIndentOutdent: { value: 30, unit: "px" }
+  plugins: "textindentoutdent",
+  toolbar: "textindent | textoutdent",
+  plugin_textindentoutdent: { value: 30, unit: "px" }
 });
 ```
 
 ## Development
 
 - [Create a plugin for TinyMCE](https://www.tiny.cloud/docs/advanced/creating-a-plugin/)
+- [How to create custom toolbar buttons](https://www.tiny.cloud/docs/ui-components/toolbarbuttons/)
+- [Types of toolbar buttons](https://www.tiny.cloud/docs/ui-components/typesoftoolbarbuttons/)
+- [How to create custom menu items](https://www.tiny.cloud/docs/ui-components/menuitems/)
 - [semantic-release-cli setup](https://semantic-release.gitbook.io/semantic-release/usage/getting-started)
 
 ### Test

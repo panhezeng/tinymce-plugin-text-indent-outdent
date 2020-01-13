@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 const config = {
   output: {
-    path: path.resolve(__dirname, "dist/text-indent-outdent"),
+    path: path.resolve(__dirname, "dist/textindentoutdent"),
     filename: "plugin.min.js"
   },
   module: {
@@ -17,7 +17,16 @@ const config = {
     ]
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx", ".css"]
+    extensions: [
+      ".js",
+      ".ts",
+      ".jsx",
+      ".vue",
+      ".css",
+      ".less",
+      ".scss",
+      ".json"
+    ]
   },
   externals: {
     tinymce: "tinymce"
