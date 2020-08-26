@@ -92,8 +92,7 @@
   },
   "lint-staged": {
     "*.{js,ts,jsx,vue,html,css,less,scss,sass,json,md,yml}": [
-      "prettier --write",
-      "git add"
+      "prettier --write"
     ]
   },
   "browserslist": [
