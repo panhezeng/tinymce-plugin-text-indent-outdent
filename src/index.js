@@ -1,24 +1,24 @@
 import tinymce from "tinymce";
 const setup = (editor, url) => {
-  const noop = function() {};
-  const constant = function(value) {
-    return function() {
+  const noop = function () {};
+  const constant = function (value) {
+    return function () {
       return value;
     };
   };
   const never = constant(false);
   const always = constant(true);
-  const none = function() {
+  const none = function () {
     return NONE;
   };
-  const NONE = (function() {
-    const eq = function(o) {
+  const NONE = (function () {
+    const eq = function (o) {
       return o.isNone();
     };
-    const call = function(thunk) {
+    const call = function (thunk) {
       return thunk();
     };
-    const id = function(n) {
+    const id = function (n) {
       return n;
     };
     const me = {
@@ -48,19 +48,19 @@ const setup = (editor, url) => {
       toArray() {
         return [];
       },
-      toString: constant("none()")
+      toString: constant("none()"),
     };
     if (Object.freeze) {
       Object.freeze(me);
     }
     return me;
   })();
-  const some = function(a) {
+  const some = function (a) {
     const constant_a = constant(a);
-    const self = function() {
+    const self = function () {
       return me;
     };
-    const bind = function(f) {
+    const bind = function (f) {
       return f(a);
     };
     const me = {
@@ -101,22 +101,22 @@ const setup = (editor, url) => {
         return o.is(a);
       },
       equals_(o, elementEq) {
-        return o.fold(never, function(b) {
+        return o.fold(never, function (b) {
           return elementEq(a, b);
         });
-      }
+      },
     };
     return me;
   };
-  const from = function(value) {
+  const from = function (value) {
     return value === null || value === undefined ? NONE : some(value);
   };
   const Option = {
     some,
     none,
-    from
+    from,
   };
-  const typeOf = function(x) {
+  const typeOf = function (x) {
     if (x === null) {
       return "null";
     }
@@ -137,13 +137,13 @@ const setup = (editor, url) => {
     }
     return t;
   };
-  const isType = function(type) {
-    return function(value) {
+  const isType = function (type) {
+    return function (value) {
       return typeOf(value) === type;
     };
   };
   const isFunction = isType("function");
-  const map = function(xs, f) {
+  const map = function (xs, f) {
     const len = xs.length;
     const r = new Array(len);
     for (let i = 0; i < len; i++) {
@@ -152,13 +152,13 @@ const setup = (editor, url) => {
     }
     return r;
   };
-  const each = function(xs, f) {
+  const each = function (xs, f) {
     for (let i = 0, len = xs.length; i < len; i++) {
       const x = xs[i];
       f(x, i);
     }
   };
-  const filter = function(xs, pred) {
+  const filter = function (xs, pred) {
     const r = [];
     for (let i = 0, len = xs.length; i < len; i++) {
       const x = xs[i];
@@ -168,7 +168,7 @@ const setup = (editor, url) => {
     }
     return r;
   };
-  const mapToObject = function(xs, f) {
+  const mapToObject = function (xs, f) {
     const r = {};
     for (let i = 0, len = xs.length; i < len; i++) {
       const x = xs[i];
@@ -176,14 +176,14 @@ const setup = (editor, url) => {
     }
     return r;
   };
-  const isNodeType = function(type) {
-    return function(node) {
+  const isNodeType = function (type) {
+    return function (node) {
       return !!node && node.nodeType === type;
     };
   };
   const isElement = isNodeType(1);
-  const hasContentEditableState = function(value) {
-    return function(node) {
+  const hasContentEditableState = function (value) {
+    return function (node) {
       if (isElement(node)) {
         if (node.contentEditable === value) {
           return true;
@@ -199,29 +199,29 @@ const setup = (editor, url) => {
   const isContentEditableFalse = hasContentEditableState("false");
   const NodeType = {
     isContentEditableTrue,
-    isContentEditableFalse
+    isContentEditableFalse,
   };
-  const fromDom = function(node) {
+  const fromDom = function (node) {
     if (node === null || node === undefined) {
       throw new Error("Node cannot be null or undefined");
     }
     return { dom: constant(node) };
   };
   const Element = {
-    fromDom
+    fromDom,
   };
-  const name = function(element) {
+  const name = function (element) {
     const r = element.dom().nodeName;
     return r.toLowerCase();
   };
-  const parent = function(element) {
+  const parent = function (element) {
     return Option.from(element.dom().parentNode).map(Element.fromDom);
   };
   const listItems = ["li", "dd", "dt"];
   const lists = ["ul", "ol", "dl"];
-  const lazyLookup = function(items) {
+  const lazyLookup = function (items) {
     let lookup;
-    return function(node) {
+    return function (node) {
       lookup = lookup ? lookup : mapToObject(items, constant(true));
       return lookup.hasOwnProperty(name(node));
     };
@@ -235,7 +235,7 @@ const setup = (editor, url) => {
       ? Option.none()
       : ancestor(scope, a, isRoot);
   }
-  const ancestor = function(scope, predicate, isRoot) {
+  const ancestor = function (scope, predicate, isRoot) {
     let element = scope.dom();
     const stop = isFunction(isRoot) ? isRoot : constant(false);
     while (element.parentNode) {
@@ -249,14 +249,14 @@ const setup = (editor, url) => {
     }
     return Option.none();
   };
-  const closest = function(scope, predicate, isRoot) {
-    const is = function(s, test) {
+  const closest = function (scope, predicate, isRoot) {
+    const is = function (s, test) {
       return test(s);
     };
     return ClosestOrAncestor(is, ancestor, scope, predicate, isRoot);
   };
 
-  const getForcedRootBlock = function(editor) {
+  const getForcedRootBlock = function (editor) {
     if (editor.getParam("force_p_newlines", false)) {
       return "p";
     }
@@ -271,33 +271,31 @@ const setup = (editor, url) => {
   };
 
   const Settings = {
-    getForcedRootBlock
+    getForcedRootBlock,
   };
 
-  const isEditable$1 = function(target) {
+  const isEditable$1 = function (target) {
     // @ts-ignore
-    return closest(target, function(elm) {
+    return closest(target, function (elm) {
       return (
         NodeType.isContentEditableTrue(elm.dom()) ||
         NodeType.isContentEditableFalse(elm.dom())
       );
-    }).exists(function(elm) {
+    }).exists(function (elm) {
       return NodeType.isContentEditableTrue(elm.dom());
     });
   };
 
-  const isListComponent = function(el) {
+  const isListComponent = function (el) {
     return isList(el) || isListItem(el);
   };
-  const parentIsListComponent = function(el) {
-    return parent(el)
-      .map(isListComponent)
-      .getOr(false);
+  const parentIsListComponent = function (el) {
+    return parent(el).map(isListComponent).getOr(false);
   };
-  const getBlocksToIndent = function(editor) {
+  const getBlocksToIndent = function (editor) {
     return filter(
       map(editor.selection.getSelectedBlocks(), Element.fromDom),
-      function(el) {
+      function (el) {
         return (
           !isListComponent(el) && !parentIsListComponent(el) && isEditable$1(el)
         );
@@ -305,11 +303,11 @@ const setup = (editor, url) => {
     );
   };
 
-  const parseIndentValue = function(value) {
+  const parseIndentValue = function (value) {
     const number = parseInt(value, 10);
     return isNaN(number) ? 0 : number;
   };
-  const indentElement = function(dom, command, value, unit, element) {
+  const indentElement = function (dom, command, value, unit, element) {
     const indentStyleName = "text-indent";
     if (command === "outdent") {
       const styleValue = Math.max(
@@ -329,7 +327,7 @@ const setup = (editor, url) => {
   };
 
   let indentValue = 2;
-  let indentUnit = "px";
+  let indentUnit = "em";
 
   const pluginTextIndentOutdent = editor.getParam("plugin_textindentoutdent");
   if (
@@ -372,10 +370,10 @@ const setup = (editor, url) => {
           formatter.apply("div");
         }
       }
-      each(getBlocksToIndent(editor), function(block) {
+      each(getBlocksToIndent(editor), function (block) {
         indentElement(dom, "indent", indentValue, indentUnit, block.dom());
       });
-    }
+    },
   });
 
   editor.ui.registry.addIcon(
@@ -405,20 +403,20 @@ const setup = (editor, url) => {
           formatter.apply("div");
         }
       }
-      each(getBlocksToIndent(editor), function(block) {
+      each(getBlocksToIndent(editor), function (block) {
         indentElement(dom, "outdent", indentValue, indentUnit, block.dom());
       });
-    }
+    },
   });
 
   return {
-    getMetadata: function() {
+    getMetadata: () => {
       return {
         name: "textindentoutdent",
         url:
-          "https://github.com/panhezeng/tinymce-plugin-text-indent-outdent#readme"
+          "https://github.com/panhezeng/tinymce-plugin-text-indent-outdent#readme",
       };
-    }
+    },
   };
 };
 tinymce.PluginManager.add("textindentoutdent", setup);

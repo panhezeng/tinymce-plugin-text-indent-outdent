@@ -19,7 +19,7 @@ class App extends React.Component {
       language: "zh_CN",
       language_url:
         "https://cdn.jsdelivr.net/npm/@panhezeng/vue-tinymce@latest/dist/langs/zh_CN.js",
-      plugin_textindentoutdent: { value: 30, unit: "px" }
+      plugin_textindentoutdent: { value: 30, unit: "px" },
     });
   }
 
